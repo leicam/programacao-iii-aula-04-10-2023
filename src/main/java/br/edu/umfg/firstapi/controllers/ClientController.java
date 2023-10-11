@@ -5,13 +5,15 @@ import br.edu.umfg.entities.Address;
 import br.edu.umfg.entities.Client;
 import br.edu.umfg.entities.Phone;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/client")
 public class ClientController {
+
+    private ArrayList<Client> list = new ArrayList<Client>();
 
     @GetMapping
     public ResponseEntity<Client> getClient(){
@@ -21,5 +23,12 @@ public class ClientController {
                 .withAddress(new Address("TEST", "1A"))
                 .withAddress(new Address("TEST", "2B"))
                 .build());
+    }
+
+    @PostMapping
+    public ResponseEntity<Client> postClient(@RequestBody Client client){
+        this.list.add(client);
+
+        return ResponseEntity.ok(client);
     }
 }

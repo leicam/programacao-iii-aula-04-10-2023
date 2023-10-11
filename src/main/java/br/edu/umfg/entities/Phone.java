@@ -1,5 +1,7 @@
 package br.edu.umfg.entities;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public class Phone {
     private String number;
 
@@ -7,6 +9,7 @@ public class Phone {
         return number;
     }
 
+    @JsonCreator
     public Phone(String number) {
         this.number = number;
     }
