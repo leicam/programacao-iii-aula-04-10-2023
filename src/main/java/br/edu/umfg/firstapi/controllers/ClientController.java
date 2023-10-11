@@ -15,12 +15,11 @@ public class ClientController {
 
     @GetMapping
     public ResponseEntity<Client> getClient(){
-        return ResponseEntity
-                .ok(new ClientBuilder("Juliano", "000")
-                        .withPhone(new Phone("00000000"))
-                        .withPhone(new Phone("11111111"))
-                        .withAddress(new Address("TEST", "1A"))
-                        .withAddress(new Address("TEST", "2B"))
-                        .build());
+        return ResponseEntity.ok(new ClientBuilder("Juliano", "000")
+                .withPhone(new Phone("00000000"))
+                .withPhone(new Phone("11111111"))
+                .withAddress(new Address("TEST", "1A"))
+                .withAddress(new Address("TEST", "2B"))
+                .build());
     }
 }
