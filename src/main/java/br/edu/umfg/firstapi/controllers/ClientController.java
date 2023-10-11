@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/client")
@@ -23,6 +24,17 @@ public class ClientController {
                 .withAddress(new Address("TEST", "1A"))
                 .withAddress(new Address("TEST", "2B"))
                 .build());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Client> getClient(@PathVariable(value = "id") UUID id){
+        for (Client client:
+             list) {
+            if (client.getId().equals(id))
+                return ResponseEntity.ok(client);
+        }
+
+        return ResponseEntity.badRequest().body(null);
     }
 
     @PostMapping
